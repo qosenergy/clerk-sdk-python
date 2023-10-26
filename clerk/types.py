@@ -83,10 +83,14 @@ class VerifyRequest(BaseModel):
     token: str
 
 
-class DeleteUserResponse(BaseModel):
+class DeleteResponse(BaseModel):
     object: str
     id: str
     deleted: bool
+
+
+class DeleteUserResponse(DeleteResponse):
+    pass
 
 
 class UpdateUserRequest(BaseModel):
@@ -96,3 +100,27 @@ class UpdateUserRequest(BaseModel):
     primary_phone_number_id: Optional[str] = None
     profile_image: Optional[str] = None
     password: Optional[str] = None
+
+
+class Organization(BaseModel):
+    object: str
+    id: str
+    name: str
+    slug: str | None = None
+    image_url: str | None = None
+    max_allowed_memberships: int | None = None
+    admin_delete_enabled: bool
+    public_metadata: dict
+    private_metadata: dict
+    created_by: str
+
+
+class DeleteOrganizationResponse(DeleteResponse):
+    pass
+
+
+class UpdateOrganizationRequest(BaseModel):
+    name: str | None = None
+    slug: str | None = None
+    max_allowed_memberships: int | None = None
+    admin_delete_enabled: bool | None = None
