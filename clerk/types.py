@@ -106,13 +106,12 @@ class Organization(BaseModel):
     object: str
     id: str
     name: str
-    slug: str | None = None
-    image_url: str | None = None
-    max_allowed_memberships: int | None = None
-    admin_delete_enabled: bool
+    slug: str
+    max_allowed_memberships: int
+    admin_delete_enabled: bool | None = None
     public_metadata: dict
     private_metadata: dict
-    created_by: str
+    created_by: str | None = None
 
 
 class DeleteOrganizationResponse(DeleteResponse):
