@@ -57,6 +57,12 @@ class Client:
 
         return OrganizationsService(self)
 
+    @property
+    def jwks(self):
+        from clerk.jwks import JWKSService
+
+        return JWKSService(self)
+
     @asynccontextmanager
     async def get(
         self, endpoint: str, params: Optional[Mapping[str, str]] = None
